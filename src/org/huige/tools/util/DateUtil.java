@@ -15,6 +15,7 @@ import java.util.List;
  *
  */
 public class DateUtil {
+	private static Calendar calendar = null;
 	/**
 	 * 根据日期 和 格式得到相应的字符日期
 	 * 
@@ -76,7 +77,97 @@ public class DateUtil {
 		SimpleDateFormat Format = new SimpleDateFormat("yyyyMMddHHmmssmmm");
 		return Format.format(new Date()); // 获取当前时间
 	}
+	/**
+	 * 功能描述：返回年份
+	 * 
+	 * @param date
+	 *            Date 日期
+	 * @return 返回年份
+	 */
+	public static int getYear(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.YEAR);
+	}
 
+	/**
+	 * 功能描述：返回月份
+	 * 
+	 * @param date
+	 *            Date 日期
+	 * @return 返回月份
+	 */
+	public static int getMonth(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.MONTH) + 1;
+	}
+
+	/**
+	 * 功能描述：返回日份
+	 * 
+	 * @param date
+	 *            Date 日期
+	 * @return 返回日份
+	 */
+	public static int getDay(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.DAY_OF_MONTH);
+	}
+
+	/**
+	 * 功能描述：返回小时
+	 * 
+	 * @param date
+	 *            日期
+	 * @return 返回小时
+	 */
+	public static int getHour(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.HOUR_OF_DAY);
+	}
+
+	/**
+	 * 功能描述：返回分钟
+	 * 
+	 * @param date
+	 *            日期
+	 * @return 返回分钟
+	 */
+	public static int getMinute(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.MINUTE);
+	}
+
+	/**
+	 * 返回秒钟
+	 * 
+	 * @param date
+	 *            Date 日期
+	 * @return 返回秒钟
+	 */
+	public static int getSecond(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.SECOND);
+	}
+
+	/**
+	 * 功能描述：返回毫秒
+	 * 
+	 * @param date
+	 *            日期
+	 * @return 返回毫秒
+	 */
+	public static long getMillis(Date date) {
+		calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.getTimeInMillis();
+	}
+	
 	/**
 	 * 获得某两个日期之间的所有日期 例startDate ：起止日期=="20101001";endDate ：截止日期="20101005"
 	 * 则返回数组[20101001, 20101002, 20101003, 20101004, 20101005]
@@ -155,29 +246,7 @@ public class DateUtil {
 
 		}
 	}
-	/**
-	 * 获取输入 月份的下 n 月份 返回 6位 like 200501
-	 * 
-	 * @param month
-	 *            like 200404
-	 * @param n
-	 * @return
-	 */
-	/*
-	 * public static String getNextMonth(String month, int n) { if (month ==
-	 * null || "".equals(month) || month.length() != 6) { throw new
-	 * RuntimeException("由于缺少必要的参数，系统无法进行制定的月份换算."); } try { String sYear =
-	 * month.substring(0, 4); int year = Integer.parseInt(sYear); String sMonth
-	 * = month.substring(4, 6); int mon = Integer.parseInt(sMonth); Calendar cal
-	 * = Calendar.getInstance(); cal.set(year, mon - 1, 1);
-	 * cal.add(Calendar.MARCH, n); SimpleDateFormat df = new
-	 * SimpleDateFormat("yyyyMM"); return df.format(cal.getTime());
-	 * 
-	 * return reTime;
-	 * 
-	 * }
-	 * 
-	 * /** 获取输入日期的下一天 返回 8位 like 20050101
+	/** 获取输入日期的下一天 返回 8位 like 20050101
 	 * 
 	 * @param today
 	 * 
