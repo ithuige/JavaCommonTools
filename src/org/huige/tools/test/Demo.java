@@ -14,6 +14,7 @@ import org.huige.tools.util.DateUtil;
 import org.huige.tools.util.ExcelUtil;
 import org.huige.tools.util.LunarCalendarUtil;
 import org.huige.tools.util.RandomUtil;
+import org.huige.tools.util.RegularUtil;
 import org.huige.tools.util.SortUtil;
 import org.huige.tools.util.StringUtil;
 
@@ -77,19 +78,24 @@ public class Demo {
 		}*/
 		System.out.println(LunarCalendarUtil.getLunar(new Date()));
 		
-		Connection con = DataBaseConnectionUtil.getConnectionToMsSql();
+		Connection con = DataBaseConnectionUtil.getMySqlConnection();
 		if (con != null) {
 			System.out.println("mssql数据库连接成功！");
 		} else {
 			System.out.println("mssql数据库连接失败！");
 		}
 
-		Connection con2 = DataBaseConnectionUtil.getConnectionToMySql();
+		Connection con2 = DataBaseConnectionUtil.getMySqlConnection();
 		if (con2 != null) {
 			System.out.println("mysql数据库连接成功！");
 		} else {
 			System.out.println("mysql数据库连接失败！");
 		}
+		
+		
+		String username = "fdsdfsdj";
+        System.out.println(RegularUtil.isUsername(username));
+        System.out.println(RegularUtil.isChinese(username));
 	}
 
 }
